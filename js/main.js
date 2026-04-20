@@ -1,5 +1,23 @@
 $(function(){
 
+
+    ymaps.ready(init);
+    function init() {
+        var map = new ymaps.Map("map", {
+            center: [55.7558, 37.6173], // Москва
+            zoom: 12
+        });
+
+        // отключаем скролл
+        map.behaviors.disable('scrollZoom');
+
+        var placemark = new ymaps.Placemark([55.7558, 37.6173], {
+            balloonContent: 'Москва'
+        });
+
+        map.geoObjects.add(placemark);
+    }
+
     $('.search_icon').on('click', function() {
         $('.search_block').addClass('search_block_view');
         $('.search_icon').hide();

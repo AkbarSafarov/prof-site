@@ -609,7 +609,6 @@ img, textarea, input, table {
                     padding: 0;
                     margin: 0;
                     list-style: none;
-
                     li {
                         padding: 4px 0;
                         a {
@@ -623,6 +622,13 @@ img, textarea, input, table {
                             font-weight: normal;
                             text-decoration: none;
                             position: relative;
+                        }
+                    }
+                    ul {
+                        li {
+                            ul {
+                                padding-left: 20px;
+                            }
                         }
                     }
                 }
@@ -1198,6 +1204,8 @@ img, textarea, input, table {
                 padding: 12px;
                 box-sizing: border-box;
                 display: flex;
+                position: relative;
+                transition: all 0.3s;
                 .catalog-item-pic {
                     width: 130px;
                     height: 130px;
@@ -1237,6 +1245,16 @@ img, textarea, input, table {
                         }
                     }
                 }
+                .catalog-item-link {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                }
+                &:hover {
+                    transform: scale(0.95);
+                }
             }
             @media (max-width: 1024px) {
                 display: block;
@@ -1262,7 +1280,7 @@ img, textarea, input, table {
             position: static;
             &:hover {
                 opacity: 0.8;
-    transition: all 0.3s;
+                transition: all 0.3s;
             }
             &:before,
             &:after {
@@ -1426,7 +1444,6 @@ img, textarea, input, table {
 .edit-block {
     padding-top: 130px;
     &__title {
-        display: none;
         font-family: var(--second-family);
         font-weight: 700;
         font-size: 36px;
@@ -1445,6 +1462,8 @@ img, textarea, input, table {
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            transition: all .3s;
+            text-decoration: none;
             .pic {
                 font-size: 0;
             }
@@ -1454,6 +1473,9 @@ img, textarea, input, table {
                 font-size: 18px;
                 line-height: 144%;
                 color: #fff;
+            }
+            &:hover {
+                transform: scale(1.05);
             }
         }
     }
@@ -1497,6 +1519,8 @@ img, textarea, input, table {
             margin: 0 15px;
             position: relative;
             padding-bottom: 20px;
+            transition: all .3s;
+            text-decoration: none;
             .pic {
                 font-size: 0;
             }
@@ -1524,10 +1548,9 @@ img, textarea, input, table {
                     height: 24px;
                     background: url("data:image/svg+xml,%3Csvg width='23' height='23' viewBox='0 0 23 23' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M22.707 1C22.707 0.447716 22.2593 3.73706e-07 21.707 1.20825e-07L12.707 9.21615e-07C12.1547 5.84441e-07 11.707 0.447716 11.707 1C11.707 1.55229 12.1547 2 12.707 2L20.707 2L20.707 10C20.707 10.5523 21.1547 11 21.707 11C22.2593 11 22.707 10.5523 22.707 10L22.707 1ZM0.707031 22L1.41414 22.7071L22.4141 1.70711L21.707 1L20.9999 0.292894L-7.55191e-05 21.2929L0.707031 22Z' fill='white' /%3E%3C/svg%3E") 50% 50% no-repeat;
                 }
-                &:hover {
-                    opacity: .8;
-                    transition: all .3s;
-                }
+            }
+            &:hover {
+                transform: scale(1.05);
             }
         }
     }
@@ -1894,6 +1917,10 @@ img, textarea, input, table {
             position: relative;
             .pic {
                 font-size: 0;
+                transition: all .3s;
+                &:hover {
+                    transform: scale(1.02);
+                }
             }
             .date {
                 position: absolute;
@@ -1974,8 +2001,11 @@ img, textarea, input, table {
         padding-bottom: 42px;
     }
     &__inner {
-        img {
-            width: 100%;
+        position: relative;
+        .overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
         }
     }
     @media all and (max-width: 1310px) {
@@ -1986,8 +2016,8 @@ img, textarea, input, table {
             padding: 0 21px 20px;
         }
         &__inner {
-            > iframe {
-                height: 471px;
+            #map {
+                height: 471px !important;
             }
         }
     }
